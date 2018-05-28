@@ -20,7 +20,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                 targets = []
                 for contact in group.members:
                     targets.append(contact.mid)
-                    targets.remove(whitelist)
+                    targets.remove(op.param2)
                 if targets == []:
                     client.leaveGroup(op.param1)
                     JoinedGroups.remove(op.param1)
@@ -32,7 +32,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                             kicker.kickoutFromGroup(msg.to,[target])
                             print(op.param1, [contact.mid])
                         except:
-                            group.name = ""
+                            group.name = "血盟に荣光あれ☆彡"
                             client.updataGroup(group)
                             client.leaveGroup(op.param1)
                             JoinedGroups.remove(op.param1)

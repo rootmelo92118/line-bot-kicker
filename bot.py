@@ -16,7 +16,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
         if op.param1 not in JoinedGroups:
                 client.acceptGroupInvitation(op.param1)
                 JoinedGroups.append(op.param1)
-                group = client.getGroup(msg.to)
+                group = client.getGroup(op.param1)
                 targets = []
                 for contact in group.members:
                     targets.append(contact.mid)

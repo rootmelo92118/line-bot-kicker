@@ -20,7 +20,6 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                 targets = []
                 for contact in group.members:
                     targets.append(contact.mid)
-                    targets.remove(op.param2)
                 if targets == []:
                     client.leaveGroup(op.param1)
                     JoinedGroups.remove(op.param1)

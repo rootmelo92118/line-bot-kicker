@@ -32,7 +32,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                             print(op.param1, [contact.mid])
                         except:
                             group.name = "血盟に荣光あれ☆彡"
-                            client.updataGroup(group)
+                            client.updatGroup(group)
                             client.leaveGroup(op.param1)
                             JoinedGroups.remove(op.param1)
     except Exception as e:

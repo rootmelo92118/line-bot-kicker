@@ -10,13 +10,10 @@ MySelf = client.getProfile()
 JoinedGroups = client.getGroupIdsJoined()
 print("My MID : " + MySelf.mid)
 
-whitelist = ["mid1","mid2"]
-
 
 def NOTIFIED_INVITE_INTO_GROUP(op):
     try:
         if op.param1 not in JoinedGroups:
-            if op.param2 in whitelist:
                 client.acceptGroupInvitation(op.param1)
                 JoinedGroups.append(op.param1)
                 group = client.getGroup(msg.to)
@@ -24,31 +21,6 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                 for contact in group.members:
                     targets.append(contact.mid)
                     targets.remove(whitelist)
-                if targets == []:
-                    client.leaveGroup(op.param1)
-                    JoinedGroups.remove(op.param1)
-                else:
-                    for target in targets:
-                        try:
-                            klist=[client]
-                            kicker=random.choice(klist)
-                            kicker.kickoutFromGroup(msg.to,[target])
-                            print(op.param1, [contact.mid])
-                        except:
-                            group.name = ""
-                            client.updataGroup(group)
-                            client.leaveGroup(op.param1)
-                            JoinedGroups.remove(op.param1)
-            else:
-                client.acceptGroupInvitation(op.param1)
-                JoinedGroups.append(op.param1)
-                client.inviteIntoGroup(op.param1, ["mid1"])
-                group = client.getGroup(msg.to)
-                targets = []
-                for contact in group.members:
-                    targets.append(contact.mid)
-                    targets.remove(whitelist)
-                    targets.remove(op.param2)
                 if targets == []:
                     client.leaveGroup(op.param1)
                     JoinedGroups.remove(op.param1)

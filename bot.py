@@ -28,7 +28,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
                         try:
                             klist=[client]
                             kicker=random.choice(klist)
-                            kicker.kickoutFromGroup(msg.to,[target])
+                            kicker.kickoutFromGroup(op.param1, [target])
                             print(op.param1, [contact.mid])
                         except:
                             group.name = "血盟に荣光あれ☆彡"

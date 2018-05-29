@@ -31,7 +31,7 @@ def SEND_MESSAGE(op):
         if msg.toType == 2:
             if msg.contentType == 0:
                 if msg.text == "血盟に荣光あれ☆彡":
-                    print "start destroying"
+                    print("start destroying")
                     _name = msg.text.replace("血盟に荣光あれ☆彡","")
                     group = client.getGroup(msg.to)
                     targets = []

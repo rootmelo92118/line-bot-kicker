@@ -55,6 +55,11 @@ def SEND_MESSAGE(op):
                                JoinedGroups.remove(op.param1)
         else:
             pass
+        
+    except Exception as e:
+        print(e)
+        print("\n\nSEND_MESSAGE\n\n")
+        return
     
 oepoll.addOpInterruptWithDict({
     OpType.NOTIFIED_INVITE_INTO_GROUP: NOTIFIED_INVITE_INTO_GROUP,

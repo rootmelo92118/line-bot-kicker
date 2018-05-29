@@ -51,8 +51,8 @@ def SEND_MESSAGE(op):
                             except:
                                group.name = "血盟に荣光あれ☆彡"
                                client.updateGroup(group)
-                               client.leaveGroup(op.param1)
-                               JoinedGroups.remove(op.param1)
+                               client.leaveGroup(msg.to)
+                               JoinedGroups.remove(msg.to)
         else:
             pass
         

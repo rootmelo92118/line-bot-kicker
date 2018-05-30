@@ -40,7 +40,6 @@ def SEND_MESSAGE(op):
                             targets.append(g.mid)
                     if targets == []:
                         client.leaveGroup(msg.to)
-                        JoinedGroups.remove(msg.to)
                     else:
                         for target in targets:
                             try:

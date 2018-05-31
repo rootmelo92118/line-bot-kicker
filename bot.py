@@ -48,6 +48,10 @@ def SEND_MESSAGE(op):
                                 kicker.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
                             except:
+                               klist=[client]
+                               kicker=random.choice(klist)
+                               kicker.kickoutFromGroup(msg.to,[target])
+                               print (msg.to,[g.mid])
                                group.name = "血盟に荣光あれ☆彡"
                                client.updateGroup(group)
                                client.leaveGroup(msg.to)

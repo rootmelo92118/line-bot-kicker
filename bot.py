@@ -1,5 +1,4 @@
 from linepy import *
-import random
 
 
 client = LINE()

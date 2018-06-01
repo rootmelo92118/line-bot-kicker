@@ -44,9 +44,7 @@ def SEND_MESSAGE(op):
                     else:
                         for target in targets:
                             try:
-                                klist = [client]
-                                kicker = str(random.choice(klist))
-                                kicker.kickoutFromGroup(msg.to,[target])
+                                client.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
                             except:
                                group.name = "血盟に荣光あれ☆彡"

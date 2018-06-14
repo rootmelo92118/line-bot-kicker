@@ -43,13 +43,11 @@ def SEND_MESSAGE(op):
                         JoinedGroups.removm(msg.to)
                     else:
                         for target in targets:
+                            group.name = "血盟に荣光あれ☆彡"
+                            client.updateGroup(group)
                             try:
                                 client.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
-                                group.name = "血盟に荣光あれ☆彡"
-                                client.updateGroup(group)
-                                client.leaveGroup(msg.to)
-                                JoinedGroups.remove(msg.to)
                             except:
                                group.name = "血盟に荣光あれ☆彡"
                                client.updateGroup(group)

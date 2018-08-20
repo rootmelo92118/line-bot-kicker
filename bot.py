@@ -1,4 +1,5 @@
-from linepy import *
+from Linephu.linepy import *
+from Linephu.akad.ttypes import *
 
 
 client = LINE()
@@ -18,7 +19,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
         if op.param1 not in JoinedGroups:
                 client.acceptGroupInvitation(op.param1)
                 JoinedGroups.append(op.param1)
-                client.sendMessage(op.param1, "血盟に荣光あれ☆彡")
+                client.sendMessage(op.param1, "bye bye")
     except Exception as e:
         print(e)
         print("\n\nNOTIFIED_INVITE_INTO_GROUP\n\n")
@@ -30,9 +31,9 @@ def SEND_MESSAGE(op):
     try:
         if msg.toType == 2:
             if msg.contentType == 0:
-                if msg.text == "血盟に荣光あれ☆彡":
+                if msg.text == "bye bye":
                     print("start destroying")
-                    _name = msg.text.replace("血盟に荣光あれ☆彡","")
+                    _name = msg.text.replace("bye bye","")
                     group = client.getGroup(msg.to)
                     targets = []
                     for g in group.members:
@@ -43,13 +44,13 @@ def SEND_MESSAGE(op):
                         JoinedGroups.removm(msg.to)
                     else:
                         for target in targets:
-                            group.name = "血盟に荣光あれ☆彡"
+                            group.name = "幻滅之遺境"
                             client.updateGroup(group)
                             try:
                                 client.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
                             except:
-                               group.name = "血盟に荣光あれ☆彡"
+                               group.name = "幻滅之遺境"
                                client.updateGroup(group)
                                client.leaveGroup(msg.to)
                                JoinedGroups.remove(msg.to)

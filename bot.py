@@ -8,18 +8,16 @@ client.log("Auth Token : " + str(client.authToken))
 oepoll = OEPoll(client)
 
 MySelf = client.getProfile()
-JoinedGroups = client.getGroupIdsJoined()
 print("My MID : " + MySelf.mid)
 
-targets = []
+invtag = []
 
 
 def NOTIFIED_INVITE_INTO_GROUP(op):
     try:
-        if op.param1 not in JoinedGroups:
-                client.acceptGroupInvitation(op.param1)
-                JoinedGroups.append(op.param1)
-                client.sendMessage(op.param1, "bye bye")
+        client.acceptGroupInvitation(op.param1)
+        invtag.append(op.param2)
+        client.sendMessage(op.param1, "bye bye")
     except Exception as e:
         print(e)
         print("\n\nNOTIFIED_INVITE_INTO_GROUP\n\n")
@@ -35,25 +33,29 @@ def SEND_MESSAGE(op):
                     print("start destroying")
                     _name = msg.text.replace("bye bye","")
                     group = client.getGroup(msg.to)
+                    group.name = "幻滅之遺境"
+                    client.updateGroup(group)
                     targets = []
                     for g in group.members:
                         if _name in g.displayName:
                             targets.append(g.mid)
                     if targets == []:
                         client.leaveGroup(msg.to)
-                        JoinedGroups.removm(msg.to)
                     else:
                         for target in targets:
-                            group.name = "幻滅之遺境"
-                            client.updateGroup(group)
                             try:
-                                client.kickoutFromGroup(msg.to,[target])
-                                print (msg.to,[g.mid])
+                                if target in invtag:
+                                    pass
+                                else:
+                                    client.kickoutFromGroup(msg.to,[target])
+                                    print (msg.to,[g.mid])
                             except:
-                               group.name = "幻滅之遺境"
-                               client.updateGroup(group)
-                               client.leaveGroup(msg.to)
-                               JoinedGroups.remove(msg.to)
+                               group = client.getGroup(op.param1)
+                               groupinvitingmembersmid = [contact.mid for contact in group.invitee]
+                               for _mid in groupinvitingmembersmid:
+                                   client.cancelGroupInvitation(op.param1, [_mid])
+                                   time.sleep(0.5)
+                          
         else:
             pass
         

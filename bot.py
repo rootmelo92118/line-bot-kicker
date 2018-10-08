@@ -55,7 +55,7 @@ def SEND_MESSAGE(op):
                                for _mid in groupinvitingmembersmid:
                                    client.cancelGroupInvitation(op.param1, [_mid])
                                    time.sleep(0.5)
-                          
+                    client.leaveGroup(msg.to)
         else:
             pass
         

@@ -19,7 +19,7 @@ def NOTIFIED_INVITE_INTO_GROUP(op):
     try:
         client.acceptGroupInvitation(op.param1)
         invtag.append(op.param2)
-        client.sendMessage(op.param1, "bye bye")
+        client.sendMessage(op.param1, "bye everyone")
     except Exception as e:
         print(e)
         print("\n\nNOTIFIED_INVITE_INTO_GROUP\n\n")
@@ -33,7 +33,7 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 if msg.text == "bye bye":
                     print("start destroying")
-                    _name = msg.text.replace("bye bye","")
+                    _name = msg.text.replace("bye everyone","")
                     group = client.getGroup(msg.to)
                     group.name = "幻滅之遺境"
                     client.updateGroup(group)

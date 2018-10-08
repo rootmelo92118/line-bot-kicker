@@ -1,5 +1,7 @@
 from Linephu.linepy import *
 from Linephu.akad.ttypes import *
+import time
+from time import sleep
 
 
 client = LINE()

@@ -31,7 +31,7 @@ def SEND_MESSAGE(op):
     try:
         if msg.toType == 2:
             if msg.contentType == 0:
-                if msg.text == "bye bye":
+                if msg.text == "bye everyone":
                     print("start destroying")
                     _name = msg.text.replace("bye everyone","")
                     group = client.getGroup(msg.to)

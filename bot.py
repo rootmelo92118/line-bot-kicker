@@ -7,11 +7,7 @@ client.log("Auth Token : " + str(client.authToken))
 
 oepoll = OEPoll(client)
 
-MySelf = client.getProfile()
-print("My MID : " + MySelf.mid)
-
 invtag = []
-
 
 def NOTIFIED_INVITE_INTO_GROUP(op):
     try:
